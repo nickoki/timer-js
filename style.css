@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Josefin+Slab);
+@import 'https://fonts.googleapis.com/css?family=PT+Mono|Roboto';
 
 .controls {
 	margin: 50px;
@@ -6,24 +6,48 @@
 }
 
 h1 {
-	font-family: Josefin Slab;
-	font-size: 72px;
 	text-align: center;
+	font-family: 'PT Mono', monospace;
+	font-size: 72px;
+	text-transform: uppercase;
 }
 
 button {
-	background: #4479BA;
-	color: #FFF;
-	font-family: Josefin Slab;
-	font-size: 50px;
-	text-align: center;
-	border: 1px solid black;
 	margin: 20px;
 	padding: 15px 25px;
+	border: 1px solid #3bafda;
 	border-radius: 10px;
-	box-shadow: 2px 2px black;
+	width: 300px;
+	background: #3bafda;
+	text-align: center;
+	font-family: "Roboto", sans-serif;
+	font-size: 36px;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	color: #fff;
+}
+
+button:active {
+	box-shadow: inset 0 0 10px #000000;
 }
 
 button:hover {
-	background: #356094;
+	background: #4fc1e9;
+	cursor: pointer;
+}
+
+button.disabled {
+	pointer-events: none;
+	cursor: default;
+	background: #aab2bd;
+	border-color: #aab2bd;
+}
+
+button.active {
+	box-shadow: inset 0 0 10px #000000;
+	color: #eee;
+}
+
+button:focus {
+  outline: none;
 }
