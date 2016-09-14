@@ -1,11 +1,3 @@
-/*
-When "Start" is clicked, the text "Stop Watch" should be replaced by "Time elapsed: 0", and the count should increment every second.
-When "Reset" is clicked, the text should return to "Stop Watch"
-When "Pause" is clicked, the text should say "Time elapsed: 1", but stop incrementing.
-*/
-
-// TODO switch start button to reset button after click
-
 // Global variables
 var seconds = 0;
 var minutes = 0;
