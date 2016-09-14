@@ -7,23 +7,19 @@ When "Pause" is clicked, the text should say "Time elapsed: 1", but stop increme
 // TODO switch start button to reset button after click
 
 // Global variables
-var time = 0;
-var seconds = "";
-var minutes = "";
-var hours = "";
+var seconds = 0;
+var minutes = 0;
+var hours = 0;
 var timerLog = [];
 var isRunning = false;
 var isPaused = false;
+
 
 
 // Start button
 $(start).on('click', function() {
 	if (!isRunning) {
 		// If not running
-		// Change display
-		$(timer).html("Time elapsed: ");
-		$(timer).append('<span></span>');
-		$(timer).children().html(time);
 		// Enable pause button
 		$(pause).removeAttr('class', 'disabled');
 		// Start timing
@@ -35,10 +31,13 @@ $(start).on('click', function() {
 	} else {
 		// If running
 		// Stop clock
-		$(timer).html("Stop Watch");
 		clearInterval(timerLog[0]);
 		timerLog = [];
-		time = 0;
+		seconds = 0;
+		// Reset display
+		$("#timer-hours").html("00");
+		$("#timer-minutes").html("00");
+		$("#timer-seconds").html("00");
 		// Switch to start button
 		$(start).html('Start');
 		// Disable & fix pause button
@@ -68,7 +67,7 @@ $(pause).on('click', function() {
 
 
 
-// Time Increment function, every 1 second
+// Time Increment (every 1 second)
 function incrementTime() {
 	// Check for multiple timers
 	if (timerLog.length > 0) {
@@ -78,13 +77,46 @@ function incrementTime() {
 	}
 }
 
+// Check Pause
 function setTime() {
-	console.log(time);
 	if (!isPaused) {
-		time++;
-		$(timer).children().html(time);
+		seconds++;
+		formatTime();
+		printTime();
+		//$(timer).children().html(time);
 	}
 }
 
-
 // Time Formatting
+function formatTime() {
+	// Every 60 seconds, increment minute, reset seconds
+	if (seconds === 60) {
+		minutes++;
+		seconds = 0;
+	}
+	// Every 60 minutes, increment hours, reset minutes
+	if (minutes === 60) {
+		hours++;
+		minutes = 0;
+	}
+}
+
+// Time Printing
+function printTime() {
+	// if seconds/minutes/hours are less than 10
+	if (hours < 10) {
+		$("#timer-hours").html('0' + hours);
+	} else {
+		$("#timer-hours").html(hours);
+	}
+	if (minutes < 10) {
+		$("#timer-minutes").html('0' + minutes);
+	} else {
+		$("#timer-minutes").html(minutes);
+	}
+	if (seconds < 10) {
+		$("#timer-seconds").html('0' + seconds);
+	} else {
+		$("#timer-seconds").html(seconds);
+	}
+}

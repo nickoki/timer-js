@@ -1,7 +1,6 @@
 @import 'https://fonts.googleapis.com/css?family=PT+Mono|Roboto';
 
 .controls {
-	margin: 50px;
 	text-align: center;
 }
 
@@ -16,7 +15,7 @@ button {
 	margin: 20px;
 	padding: 15px 25px;
 	border: 1px solid #3bafda;
-	border-radius: 10px;
+	border-radius: 20px;
 	width: 300px;
 	background: #3bafda;
 	text-align: center;
@@ -27,13 +26,13 @@ button {
 	color: #fff;
 }
 
-button:active {
-	box-shadow: inset 0 0 10px #000000;
-}
-
 button:hover {
 	background: #4fc1e9;
 	cursor: pointer;
+}
+
+button:active {
+	box-shadow: inset 0 0 10px #000000;
 }
 
 button.disabled {
