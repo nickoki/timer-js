@@ -6,17 +6,22 @@ When "Pause" is clicked, the text should say "Time elapsed: 1", but stop increme
 
 // TODO switch start button to reset button after click
 
+// Global variables
 var time = 0;
 var timerLog = [];
+var isPaused = false;
+
+
 
 // Start button
 $(start).on('click', function() {
 	$(timer).html("Time elapsed: ");
 	$(timer).append('<span></span>');
 	$(timer).children().html(time);
-
 	incrementTime();
-});
+})
+
+
 
 // Reset button
 $(reset).on('click', function() {
@@ -24,9 +29,22 @@ $(reset).on('click', function() {
 	clearInterval(timerLog[0]);
 	timerLog = [];
 	time = 0;
-});
+})
 
+
+
+// TODO toggle css
 // Pause button
+$(pause).on('click', function() {
+	if (isPaused === false) {
+		isPaused = true;
+		console.log("Paused!");
+	} else {
+		isPaused = false;
+		console.log("Unpaused!");
+	}
+})
+
 
 
 // Time Increment function, every 1 second
@@ -39,26 +57,12 @@ function incrementTime() {
 	}
 }
 
+
+
 function setTime() {
-	time++;
 	console.log(time);
-	$(timer).children().html(time);
+	if (!isPaused) {
+		time++;
+		$(timer).children().html(time);
+	}
 }
-
-
-
-
-/*
-timers = [];
-start.on("click", function(){
-  timers.push(setInterval(singAnnoyingSong, 500));
-  console.log(timers);
-});
-
-stop.on("click", function(){
-  for (var i = 0; i < timers.length; i++) {
-    clearInterval(timers[i])
-  }
-  timers = [];
-});
-*/
